@@ -1,11 +1,13 @@
 <template>
   <div class="hello">
-    <label>Deixei sua mensagem aqui</label>
+    <label>Deixe sua mensagem aqui</label>
+    <p v-if="visibleIf">Testando o v-if</p>
+    <p v-show="visibleShow">Testando o v-show</p>
     <div style="margin-top: 10px;">
-      {{ arrayOfObjects[0].message }}<br>
       <input type="text" v-model="message.text">
       <button @click="mostrarMensagem" >Mostrar mensagem</button>
     </div>
+    <button @click="exibeParagrafos" style="margin: 10px 0;">Exibir os parágrafos</button>
   </div>
 </template>
 
@@ -14,13 +16,8 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      arrayOfObjects: [{
-        message: 'mensagem 1',
-        number: 1,
-      }, {
-        message: 'mensagem 1',
-        number: 2,
-      }],
+      visibleIf: false,
+      visibleShow: false,
       message: {
         text: '',
         title: '',
@@ -30,7 +27,12 @@ export default {
   methods: {
     mostrarMensagem() {
       alert('aqui sua mensagem ' + this.message.text);
-    }
+    },
+
+    exibeParagrafos() {
+      this.visibleIf = true;
+      this.visibleShow = true;
+    },
   }
 }
 </script>
